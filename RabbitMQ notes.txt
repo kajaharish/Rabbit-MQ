@@ -1,0 +1,22 @@
+Function of exchange -
+	a) Determine the queues to which message has to be routed.
+	b) Based on exchange type appropriate routing algo will be used to route messages.
+
+
+Attributes of rabbitmq used by exchanges-
+	a) Bounding Key - Created when we bind an exchange with an queue
+					- Every queue that is created, needs to be binded by some exchange.
+					- Else the message published to that exchange will be lost.
+	
+	
+	b) Routing Key	- Passed by publisher along with the message to be published.
+					- When the routing key matches a binding key of a queue, message is routed to that queue.
+					
+
+Exchange Types-
+	a) Fan-out Exchange	- Used to broadcast message to all queues linked to that exchange. (Routing key in this case will be in-effective and ignored.)
+	b) Direct Exchange	- Uses routing key and binding key to route messages.
+	c) Topic Exchange 	- Uses routing key and binding key to route messages. It can handle wild card characters in routing key. (* - it will match one 
+						  or more words and # - it will match zero or more words).
+	d) Header Exchange	- Uses Headers to route messages. Parameters defined in the header message should match with the parameters specified in the
+						  binding queue, only then will the message be routed to that queue.
