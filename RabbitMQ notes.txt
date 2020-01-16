@@ -1,3 +1,8 @@
+RabbitMQ - It is a message broker. Accepts and forwards messages. It has 3 components:
+				a) Producer/Publisher.
+				b) Queue
+				c) Consumer
+
 Function of exchange -
 	a) Determine the queues to which message has to be routed.
 	b) Based on exchange type appropriate routing algo will be used to route messages.
