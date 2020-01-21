@@ -11,11 +11,13 @@ amqp.connect('amqp://localhost',(error,connection)=>{
 
         var queue='task_queue';
         channel.assertQueue(queue,{durable:true});
+        channel.prefetch(1);
         channel.consume(queue,(msg)=>{
             var secs = msg.content.toString().split('.').length - 1;
             console.log('[x] received %s',msg.content.toString());
             setTimeout(()=>{
                 console.log("[x] Done");
+                channel.ack(msg);
             },secs *1000);
         },{noAck:false});
     })
